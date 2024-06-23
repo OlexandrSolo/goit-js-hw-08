@@ -70,17 +70,7 @@ const elementsHTML = {
 const { gallery } = elementsHTML;
 gallery.insertAdjacentHTML('beforeend', createMarkup(images));
 
-gallery.addEventListener('click', evt => {
-  evt.preventDefault();
-  console.dir();
-  if (!evt.target.classList.contains('gallery-image')) {
-    return;
-  }
-
-  if (evt.target.dataset.source !== '') {
-    fullScreen(evt.target);
-  }
-});
+gallery.addEventListener('click', handlerClick);
 
 function createMarkup(images) {
   let markup = '';
@@ -113,6 +103,14 @@ function fullScreen(orgImg) {
   instance.show();
 }
 
-// function handlerClick(evt) {
-//     evt.taget
-// }
+function handlerClick(evt) {
+  evt.preventDefault();
+  console.dir();
+  if (!evt.target.classList.contains('gallery-image')) {
+    return;
+  }
+
+  if (evt.target.dataset.source !== '') {
+    fullScreen(evt.target);
+  }
+}
